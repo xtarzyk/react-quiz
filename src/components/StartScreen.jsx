@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 export default function StartScreen({ numQuestions, dispatch }) {
   return (
     <div className="start">

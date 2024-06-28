@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useReducer } from 'react';
 import './index.css'
 import Header from './components/Header';
@@ -11,7 +12,8 @@ const initialState = {
   questions: [],
 
   // loading, error, ready, active, finished
-  status: "loading"
+  status: "loading",
+  index: 0
 }
 
 function reducer(state, action) {
@@ -36,7 +38,7 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [{ questions, status }, dispatch] = useReducer(reducer, initialState)
+  const [{ questions, status, index }, dispatch] = useReducer(reducer, initialState)
 
   const numQuestions = questions.length
 
@@ -44,7 +46,7 @@ function App() {
     fetch("http://localhost:8000/questions")
       .then(res => res.json())
       .then(data => dispatch({type: 'dataReceived', payload: data}))
-      .catch(err => dispatch({type: "dataFailed"}))
+      .catch(_err => dispatch({type: "dataFailed"}))
   }, [])
   
   return (
@@ -54,7 +56,7 @@ function App() {
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
         {status === "ready" && <StartScreen numQuestions={numQuestions} dispatch={dispatch} />}
-        {status === "active" && <Question />}
+        {status === "active" && <Question question={questions[index]} />}
       </Main>
     </div>
   )
