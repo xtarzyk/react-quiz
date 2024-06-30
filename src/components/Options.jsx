@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export default function Options({ question, answer, dispatch }) {
   const hasAnswered = answer !== null
 

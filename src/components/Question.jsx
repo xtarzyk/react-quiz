@@ -1,6 +1,5 @@
 import Options from "./Options";
 
-/* eslint-disable react/prop-types */
 export default function Question({ question, answer, dispatch }) {
   return (
     <div>

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 export default function Progress({ index, numQuestions, points, maxPossiblePoints, answer }) {
   return (
     <header className="progress">
